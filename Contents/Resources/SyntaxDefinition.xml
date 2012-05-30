@@ -11,40 +11,37 @@
     </head>
 
     <states>
-        <default id="Base" color="#000" inverted-color="#fff">
-            <state id="HTML Comment" color="#236E25" font-style="italic">
+        <default id="Base" color="#000" inverted-color="#fff" scope="meta.default">
+            <state id="HTML Comment" scope="comment">
                 <begin><regex>/</regex></begin>
                 <end><regex>[\n\r]</regex></end>
             </state>
 
-            <state id="HAML Comment" color="#236E25" font-style="italic">
+            <state id="HAML Comment" scope="comment">
                 <begin><regex>-#</regex></begin>
                 <end><regex>[\n\r]</regex></end>
             </state>
 
-            <!-- Red #FE1A1A -->
-            <state id="HTML Element" color="#881280" inverted-color="#fac586"  font-style="normal" font-weight="normal" useforautocomplete="no">  <!-- color="#d6771c" -->
+            <state id="HTML Element" scope="markup.tag.attribute.value" useforautocomplete="no">
               <begin><regex>^\s*[%\.#](?=[\w_-])</regex></begin>
               <end><regex>.(?=[&amp;={\[\s\r\n!])</regex></end>
             </state>
 
-            <state id="interpolated ruby" type="string" color="#760f15" inverted-color="#f48700"  font-style="italic" font-weight="normal" usespellchecking="yes">
+            <state id="interpolated ruby" scope="style.value.keyword" usespellchecking="yes">
                 <begin><regex>(?&lt;===)(?:.)</regex></begin>
                 <end><regex>[\r\n]</regex></end>
                 <import mode="Ruby" state="String with double quotes"/>
             </state>
 
-            <state id="Inline Ruby" color="#000" usesymbolsfrommode="Ruby" useautocompletefrommode="Ruby">
+            <state id="Inline Ruby" usesymbolsfrommode="Ruby" useautocompletefrommode="Ruby">
                 <begin><regex>(?:[&amp;!]?(?&lt;!=)=|-(?!#))(?=[\s\w])</regex></begin>
                 <end><regex>[\n\r]</regex></end>
-
                 <import mode="Ruby" />
             </state>
 
-            <state id="Ruby Hash Attribute" color="#000" usesymbolsfrommode="Ruby" useautocompletefrommode="Ruby">
+            <state id="Ruby Hash Attribute" usesymbolsfrommode="Ruby" useautocompletefrommode="Ruby">
                 <begin><regex>{</regex></begin>
                 <end><regex>[}\n\r]</regex></end>
-
                 <import mode="Ruby" />
             </state>
         </default>
